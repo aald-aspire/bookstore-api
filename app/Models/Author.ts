@@ -1,13 +1,12 @@
-import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { column } from '@ioc:Adonis/Lucid/Orm'
+import BaseModel from 'App/Models/BaseModel'
 
 export default class Author extends BaseModel {
-  @column({ isPrimary: true })
-  public id: number
+  public static table = 'authors'
 
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
+  @column()
+  public name: string
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  @column()
+  public biography: string
 }
