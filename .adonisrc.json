@@ -16,7 +16,8 @@
   },
   "preloads": [
     "./start/routes",
-    "./start/kernel"
+    "./start/kernel",
+    "./start/events"
   ],
   "providers": [
     "./providers/AppProvider",
@@ -36,6 +37,13 @@
           "tests/functional/**/*.spec(.ts|.js)"
         ],
         "timeout": 60000
+      },
+      {
+        "name": "non-functional",
+        "files": [
+          "tests/non-functional/**/*.spec(.ts|.js)"
+        ],
+        "timeout": 50000
       }
     ]
   },

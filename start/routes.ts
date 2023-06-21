@@ -31,13 +31,30 @@ Route.group(() => {
   Route.group(() => {
 
     Route.post('/login', 'UsersController.login').as('login')
-    Route.post('/logout', 'UsersController.logout').middleware('auth').as('logout')
-    Route.post('/add', 'UsersController.add').as('add')
+
+    Route.group(() => {
+
+      Route.post('/logout', 'UsersController.logout').as('logout')
+      Route.post('/add', 'UsersController.add').as('add')
+
+    }).middleware('auth')
 
   }).prefix('/users').as('users')
 
   Route.group(() => {
+
+    Route.get('/', 'AuthorsController.index').as('index')
+    Route.get('/:id', 'AuthorsController.show').as('show')
+    Route.post('/', 'AuthorsController.add').as('add')
+
     Route.group(() => {
+      Route.put('/:id', 'AuthorsController.edit').as('edit')
+      Route.delete('/:id', 'AuthorsController.remove').as('remove')
+    }).middleware('rbac:admin')
+
+  }).prefix('/authors').middleware('auth').as('authors')
+
+  Route.group(() => {
       
       Route.get('/', 'BooksController.index').as('index')
       Route.get('/:id', 'BooksController.show').as('show')
@@ -48,20 +65,6 @@ Route.group(() => {
         Route.delete('/:id', 'BooksController.remove').as('remove')
       }).middleware('rbac:admin')
 
-    }).prefix('/books').middleware('auth').as('books')
-
-    Route.group(() => {
-
-      Route.get('/', 'AuthorsController.index').as('index')
-      Route.get('/:id', 'AuthorsController.show').as('show')
-      Route.post('/', 'AuthorsController.add').as('add')
-
-      Route.group(() => {
-        Route.put('/:id', 'AuthorsController.edit').as('edit')
-        Route.delete('/:id', 'AuthorsController.remove').as('remove')
-      }).middleware('rbac:admin')
-
-    }).prefix('/authors').middleware('auth').as('authors')
-  })
+  }).prefix('/books').middleware('auth').as('books')
 
 }).prefix('/api/' + api_version)

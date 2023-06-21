@@ -4,6 +4,38 @@ import { column, beforeSave} from '@ioc:Adonis/Lucid/Orm'
 import { v4 as uuidv4 } from 'uuid'
 import BaseModel from 'App/Models/BaseModel'
 
+/**
+* @swagger
+* components:
+*   schemas:
+*      User:
+*        description: API representation of User model
+*        type: object
+*        properties:
+*          id:
+*            type: string
+*            readOnly: true
+*          name:
+*            type: string
+*          email:
+*            type: string
+*          password:
+*            type: string
+*          role:
+*            type: string
+*          rememberMeToken:
+*            type: string
+*            nullable: true
+*          created_at:
+*            type: string
+*            format: date-time
+*            readOnly: true
+*          updated_at:
+*            type: string
+*            format: date-time
+*            readOnly: true
+* 
+*/
 export default class User extends BaseModel {
   public static table = 'users'
 

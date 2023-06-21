@@ -1,5 +1,17 @@
 {
   "commands": {
+    "db:su": {
+      "settings": {
+        "loadApp": true,
+        "stayAlive": false
+      },
+      "commandPath": "./commands/CreateSuperUser",
+      "commandName": "db:su",
+      "description": "Creates the super user account",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",

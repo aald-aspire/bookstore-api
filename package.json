@@ -6,7 +6,8 @@
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
-    "test": "node ace test"
+    "test": "node ace test",
+    "test-all": "node ace migration:fresh && node ace db:su && rm -f node_modules/.cache/@japa/run-failed-tests && npm run test"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",
@@ -25,6 +26,7 @@
     "@adonisjs/core": "^5.9.0",
     "@adonisjs/lucid": "^18.4.0",
     "@adonisjs/repl": "^3.1.11",
+    "@japa/assert": "^1.4.1",
     "adonis5-swagger": "^1.4.1",
     "luxon": "^3.3.0",
     "mysql2": "^3.3.5",
