@@ -5,7 +5,7 @@ export default class BaseModel extends LucidBaseModel {
   @column({ isPrimary: true })
   public id: string
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true /*, autoUpdate: false*/})
   public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
