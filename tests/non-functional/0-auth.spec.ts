@@ -1,8 +1,6 @@
 import { test } from '@japa/runner'
 import Route from '@ioc:Adonis/Core/Route'
 import User from 'App/Models/User'
-import Author from 'App/Models/Author'
-import Book from 'App/Models/Book'
 
 test.group('Auth', (group) => {
 	const userInfo = {

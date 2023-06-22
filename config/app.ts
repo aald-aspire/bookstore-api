@@ -181,6 +181,18 @@ export const logger: LoggerConfig = {
   |
   */
   prettyPrint: Env.get('NODE_ENV') === 'development',
+
+  /*
+  |--------------------------------------------------------------------------
+  | Redaction
+  |--------------------------------------------------------------------------
+  |
+  | Redacts certain input paths
+  |
+  */
+  redact: {
+    paths: ['password', 'token']
+  }
 }
 
 /*
