@@ -6,6 +6,13 @@
 - NPM
 - MYSQL
 
+## Building
+This step is recommended for production environment.
+
+``` npm run build ```
+
+Create and adjust .env file to the "build" directory.
+
 ## Installation
 Clone repo, then run the following command:
 
@@ -18,7 +25,26 @@ Create and adjust .env file accordingly, then run the following commands:
 ``` node ace db:su ```
 
 ## Running
+For running in production environment (after building bookstore-api) you have to run the following commands:
+
+``` cd build ```
+``` npm ci --production ```
+``` node server.js ```
+
+To run bookstore-api without performing a build, you need to run the following command:
+
 ``` node ace serve ```
+
+## Docker
+To build docker image, make sure to use the following command at the project's root folder level:
+
+``` docker image build --no-cache --tag <desired-image-tag> ./ ```
+
+You may perform a clean database migration prior to launching a container by calling the following commands:
+
+``` node ace migration:fresh ```
+
+``` node ace db:su ```
 
 ## Testing
 Recommended step (WARNING: PERFORMING THIS WILL WIPE THE DATABASE)

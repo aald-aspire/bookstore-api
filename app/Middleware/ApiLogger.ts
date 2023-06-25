@@ -1,7 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Logger from '@ioc:Adonis/Core/Logger'
 
-export default class Logger {
+export default class ApiLogger {
 
 	public async handle (
 	    ctx: HttpContextContract,

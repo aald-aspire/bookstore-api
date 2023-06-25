@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import { column, beforeCreate, BaseModel as LucidBaseModel } from '@ioc:Adonis/Lucid/Orm'
 import { v4 as uuidv4 } from 'uuid'
 

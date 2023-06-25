@@ -29,7 +29,7 @@ export default class AuthorsController {
     *       500:
     *         $ref: '#/components/responses/InternalServerError'
     */
-	public async index(ctx: HttpContextContract) {
+	public async index() {
 		
 		const authors = await Author.all()
 

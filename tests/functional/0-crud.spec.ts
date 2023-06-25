@@ -5,10 +5,10 @@ import Author from 'App/Models/Author'
 import Book from 'App/Models/Book'
 
 test.group('User', () => {
-	const user = User.findBy('email', 'superadmin@host.com')
+	const user: any = User.findBy('email', 'superadmin@host.com')
 
 	test('New User', async ({client}) => {
-		const userInfo = {
+		const userInfo: any = {
 			name: "Test User Name",
 			email: "testuser@host.com",
 			password: "userpassword"
@@ -32,7 +32,7 @@ test.group('User', () => {
 	})
 
 	test('New Admin User', async ({client}) => {
-		const adminInfo = {
+		const adminInfo: any = {
 			name: "Test Admin Name",
 			email: "testadmin@host.com",
 			password: "adminpassword",
@@ -46,9 +46,9 @@ test.group('User', () => {
 
 
 test.group('Author', () => {
-	const user = User.findBy('email', 'superadmin@host.com')
+	const user: any = User.findBy('email', 'superadmin@host.com')
 
-	const authorInfo = {
+	const authorInfo: any = {
 		name: "Test Author Name",
 		biography: "Test Author Biography"
 	}
@@ -76,7 +76,7 @@ test.group('Author', () => {
 
 	test('Update Author', async ({client}) => {
 
-		const authorInfoMod = {
+		const authorInfoMod: any = {
 			name: "Mod Test Author Name",
 			biography: authorInfo.biography
 		}
@@ -88,10 +88,9 @@ test.group('Author', () => {
 
 
 test.group('Books', () => {
+	const user: any = User.findBy('email', 'superadmin@host.com')
 
-	const user = User.findBy('email', 'superadmin@host.com')
-
-	const bookInfo = {
+	var bookInfo: any = {
 		title: "Test Book Title",
 		author: null,
 		isbn: "testbookisbn",
@@ -104,7 +103,7 @@ test.group('Books', () => {
 
 	test('New Book', async ({client}) => {
 
-		const author = await Author.findBy('name', 'Mod Test Author Name')
+		const author: any = await Author.findBy('name', 'Mod Test Author Name')
 		bookInfo.author = author.id
 
 		const bookAddRes = await client.post(Route.makeUrl('books.add')).json(bookInfo).guard('api').loginAs(user)
@@ -125,8 +124,8 @@ test.group('Books', () => {
 	})
 
 	test('Update Book', async ({client}) => {
-
-		const bookInfoMod = {
+		
+		const bookInfoMod: any = {
 			title: "Mod Test Book Title",
 			author: bookInfo.author,
 			isbn: bookInfo.isbn,
@@ -141,9 +140,9 @@ test.group('Books', () => {
 })
 
 test.group('Removal', () => {
+	const user: any = User.findBy('email', 'superadmin@host.com')
 
-	const user = User.findBy('email', 'superadmin@host.com')
-	let author = null
+	let author: any = null
 
 	test('Delete Author Contraints', async ({client}) => {
 		author = await Author.findBy('name', 'Mod Test Author Name')

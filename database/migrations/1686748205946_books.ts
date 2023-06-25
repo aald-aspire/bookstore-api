@@ -10,8 +10,8 @@ export default class extends BaseSchema {
       table.uuid('author').references('id').inTable('authors')
       table.string('isbn').notNullable().unique()
       table.text('description', 'medium_text').notNullable()
-      table.decimal('price').notNullable().default(0.0)
-      table.integer('quantity').notNullable().default(0)
+      table.decimal('price').notNullable().defaultTo(0.0)
+      table.integer('quantity').notNullable().defaultTo(0)
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

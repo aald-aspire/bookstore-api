@@ -10,10 +10,10 @@ test.group('Auth', (group) => {
 		role: "user"
 	}
 
-	let testUser = null
+	let testUser: any = null
 
 	test('OAT Login/Logout', async ({client, assert}) => {
-		const testUser = await User.create(userInfo)
+		await User.create(userInfo)
 
 		const userLoginRes = await client.post(Route.makeUrl('users.login')).json({
 			email: userInfo.email,
@@ -35,8 +35,10 @@ test.group('Auth', (group) => {
 		userLogoutRes.assertStatus(200)
 	})
 
-	group.teardown((self) => {
+	group.teardown(async () => {
+		testUser = await User.findBy('email', userInfo.email)
+
 		if(testUser !== null)
-			testUser.delete()
+			await testUser.delete()
 	})
 })
