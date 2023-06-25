@@ -1,6 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { Exception } from '@poppinss/utils'
-import User from 'App/Models/User'
 
 export default class RbacMiddleware {
 
@@ -12,9 +11,9 @@ export default class RbacMiddleware {
 
     const role_list = roles
 
-    const user = ctx.auth.user
+    const user: any = ctx.auth.user ?? null
 
-    if(!role_list.includes(user.role)) {
+    if(user === null || !role_list.includes(user.role)) {
       throw new Exception(
         'Access Forbidden, No Permission',
         403,

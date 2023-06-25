@@ -56,7 +56,7 @@ export default class UsersController {
 		} catch (throwable) {
 			// console.log(throwable)
 
-            var error = null
+            let error: any = null
 
 			if(throwable.errno === -113)
 				error = ctx.response.serviceUnavailable({message: 'Service Unavailable, Try Again Later'})
@@ -154,7 +154,7 @@ export default class UsersController {
 		const userInfo = ctx.request.body()
 
 		try {
-			const user = await User.create({
+			await User.create({
 				name: userInfo.name,
 				email: userInfo.email,
 				password: userInfo.password,
@@ -166,7 +166,7 @@ export default class UsersController {
 		} catch(throwable) {
             // console.log(throwable)
 
-            var error = null
+            let error: any = null
 
             if(throwable.errno === 1062)
                 error = ctx.response.conflict({message: 'User Already Exists'})
