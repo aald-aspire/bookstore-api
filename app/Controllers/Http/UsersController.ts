@@ -159,7 +159,8 @@ export default class UsersController {
 				email: userInfo.email,
 				password: userInfo.password,
 				role: userInfo.role ?? 'user',
-				rememberMeToken: userInfo.rememberMeToken ?? null
+				rememberMeToken: userInfo.rememberMeToken ?? null,
+                created_by: ctx.auth.user.id
 			});
 
 			return ctx.response.created({message: 'User Created Successfully'})

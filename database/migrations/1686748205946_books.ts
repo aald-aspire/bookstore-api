@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.text('description', 'medium_text').notNullable()
       table.decimal('price').notNullable().defaultTo(0.0)
       table.integer('quantity').notNullable().defaultTo(0)
+      table.uuid('created_by').references('id').inTable('users').onDelete('SET NULL')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
