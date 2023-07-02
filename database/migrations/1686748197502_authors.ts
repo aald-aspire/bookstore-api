@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.uuid('id').primary().unique()
       table.string('name').notNullable().unique()
       table.text('biography', 'medium_text')
+      table.uuid('created_by').references('id').inTable('users').onDelete('SET NULL')
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

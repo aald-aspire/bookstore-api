@@ -129,7 +129,8 @@ export default class BooksController {
 				isbn: bookInfo.isbn,
 				description: bookInfo.description,
 				price: bookInfo.price,
-				quantity: bookInfo.quantity
+				quantity: bookInfo.quantity,
+                created_by: ctx.auth.user.id
 			});
 
 			return ctx.response.created(book)
@@ -192,8 +193,7 @@ export default class BooksController {
 		        'E_NOT_FOUND'
 			)
 
-		book.fill(bookInfo)
-		book.id = ctx.params.id
+		book.merge(bookInfo)
 		book.save()
 
 		return ctx.response.ok(book)

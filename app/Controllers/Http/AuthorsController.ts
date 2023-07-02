@@ -126,7 +126,8 @@ export default class AuthorsController {
 		try {
 			const author = await Author.create({
 				name: authorInfo.name,
-				biography: authorInfo.biography
+				biography: authorInfo.biography,
+				created_by: ctx.auth.user.id
 			});
 
 			return ctx.response.created(author)
@@ -189,8 +190,7 @@ export default class AuthorsController {
 		        'E_NOT_FOUND'
 			)
 
-		author.fill(authorInfo)
-		author.id = ctx.params.id
+		author.merge(authorInfo)
 		author.save()
 
 		return ctx.response.ok(author)
